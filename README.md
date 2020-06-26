@@ -55,8 +55,8 @@ User will be able to choose :
 
 Here's a walkthrough of the mockup built with [*figma*](https://www.figma.com/downloads/):
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
+Video Walkthrough of **Amizik**.
+![aMizik](amizik.gif)
 ## Notes
 
 Describe any challenges encountered while building the app.
