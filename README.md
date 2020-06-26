@@ -56,7 +56,15 @@ User will be able to choose :
 Here's a walkthrough of the mockup built with [*figma*](https://www.figma.com/downloads/):
 
 Video Walkthrough of **Amizik**.
+
 ![aMizik](amizik.gif)
+
+## Click on the picture below, to view `Video Presentation`.
+
+<a href="https://www.loom.com/share/f8986bbe59bd465989c3702ef2c325a6" target="_blank"><img src="./amizik.png" 
+alt="aMizik" width="240" height="auto" border="10" /></a>
+
+
 ## Notes
 
 Describe any challenges encountered while building the app.
