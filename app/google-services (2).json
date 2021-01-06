@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "139836957388",
+    "project_id": "amizik-df728",
+    "storage_bucket": "amizik-df728.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139836957388:android:fa0d674747f82a3cd19869",
+        "android_client_info": {
+          "package_name": "com.example.amizik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139836957388-m63rv9dec7r02qaqimdh7ms5ed27f93j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.amizik",
+            "certificate_hash": "5b8143e241f6c422b4af44aa24549debc3126d7c"
+          }
+        },
+        {
+          "client_id": "139836957388-pif926s47raaboulc6igo99im8ngpad3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDu_YxxxgDKRSqxPD9JEl4qZ9iZdm1XB3w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139836957388-pif926s47raaboulc6igo99im8ngpad3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
