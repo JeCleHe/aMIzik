@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "139836957388",
-    "project_id": "amizik-df728",
-    "storage_bucket": "amizik-df728.appspot.com"
+    "project_number": "1017283845548",
+    "project_id": "amizik-c63de",
+    "storage_bucket": "amizik-c63de.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:139836957388:android:fa0d674747f82a3cd19869",
+        "mobilesdk_app_id": "1:1017283845548:android:0fe16ca903b301478c2e09",
         "android_client_info": {
           "package_name": "com.example.amizik"
         }
       },
       "oauth_client": [
         {
-          "client_id": "139836957388-m63rv9dec7r02qaqimdh7ms5ed27f93j.apps.googleusercontent.com",
+          "client_id": "1017283845548-nphbdvgh0n6hq0dq3aaecmvjam6u7pa3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.amizik",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "139836957388-pif926s47raaboulc6igo99im8ngpad3.apps.googleusercontent.com",
+          "client_id": "1017283845548-revqjcv3q75vp2kfq42rm8dnlpl4m418.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDu_YxxxgDKRSqxPD9JEl4qZ9iZdm1XB3w"
+          "current_key": "AIzaSyC2VitpnphnrhqAgBu2jNJo1LZ1qRHwfXg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "139836957388-pif926s47raaboulc6igo99im8ngpad3.apps.googleusercontent.com",
+              "client_id": "1017283845548-revqjcv3q75vp2kfq42rm8dnlpl4m418.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
