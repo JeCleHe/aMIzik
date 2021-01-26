@@ -1,4 +1,4 @@
-package com.example.amizik.fragments;
+package com.example.amizik;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,11 +11,8 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.amizik.Acceuil;
-import com.example.amizik.R;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -26,13 +23,13 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.amizik.R.*;
 
-public class ProfileFragment1 extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
+
     EditText email , pass;
     Button btnc;
     private FirebaseAuth mAuth;
@@ -43,10 +40,11 @@ public class ProfileFragment1 extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        setContentView(layout.activity_profile_fragment1);
+        setContentView(layout.activity_login);
         email = (EditText) findViewById(id.email);
         pass  = (EditText) findViewById(id.pass);
         btnc  = (Button) findViewById(id.btnc) ;
+
 
         btnc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,25 +140,25 @@ public class ProfileFragment1 extends AppCompatActivity {
         if (password.isEmpty()){
             pass.setError("Password vide");
             pass.requestFocus();
+            return;
         }
         if (password.length() < 6){
             pass.setError(" le password doit avoir 6 lettre minimum");
             pass.requestFocus();
+            return;
         }
         mAuth.signInWithEmailAndPassword(mail ,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()){
 
-
-                        startActivity(new Intent(ProfileFragment1.this, Acceuil.class));
-
-
-
+                       // Acceuilll
+                        startActivity(new Intent(LoginActivity.this, Acceuil.class));
+                        finish();
 
                 }else {
 
-                    Toast.makeText(ProfileFragment1.this , "echec de connection" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this , "echec de connection" , Toast.LENGTH_LONG).show();
 
 
                 }

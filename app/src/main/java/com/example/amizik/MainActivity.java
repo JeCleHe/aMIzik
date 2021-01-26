@@ -10,8 +10,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.amizik.fragments.ProfileFragment1;
-
 public class MainActivity extends AppCompatActivity {
 private static  int timeout = 3000;
 TextView amizik , ayizyen;
@@ -33,7 +31,7 @@ ImageView image;
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-  Intent intent = new Intent( MainActivity.this , ProfileFragment1.class);
+  Intent intent = new Intent( MainActivity.this , LoginActivity.class);
   startActivity(intent);
   finish();
 
