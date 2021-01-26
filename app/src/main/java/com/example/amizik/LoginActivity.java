@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -30,8 +31,9 @@ public class LoginActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
 
-    EditText email , pass;
-    Button btnc;
+    private EditText email , pass;
+    private Button btnc;
+    private TextView signup;
     private FirebaseAuth mAuth;
 
     @Override
@@ -44,7 +46,15 @@ public class LoginActivity extends AppCompatActivity {
         email = (EditText) findViewById(id.email);
         pass  = (EditText) findViewById(id.pass);
         btnc  = (Button) findViewById(id.btnc) ;
+        signup = (TextView) findViewById(id.signup);
 
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, SingupActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnc.setOnClickListener(new View.OnClickListener() {
             @Override
