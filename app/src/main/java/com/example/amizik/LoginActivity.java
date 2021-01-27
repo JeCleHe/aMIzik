@@ -11,6 +11,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     private static int RC_SIGN_IN = 100;
     GoogleSignInClient mGoogleSignInClient;
 
+    private ImageView imv;
     private EditText email , pass;
     private Button btnc;
     private TextView signup;
@@ -47,6 +49,16 @@ public class LoginActivity extends AppCompatActivity {
         pass  = (EditText) findViewById(id.pass);
         btnc  = (Button) findViewById(id.btnc) ;
         signup = (TextView) findViewById(id.signup);
+
+        //Temporary
+        imv = findViewById(R.id.imv);
+        imv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in = new Intent(LoginActivity.this, NavigationActivity.class);
+                startActivity(in);
+            }
+        });
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +175,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (!task.isSuccessful()){
 
                        // Acceuilll
-                        startActivity(new Intent(LoginActivity.this, Acceuil.class));
+                        startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
                         finish();
 
                 }else {
