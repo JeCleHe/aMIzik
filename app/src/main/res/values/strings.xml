@@ -5,4 +5,7 @@
     <string name="video">Video</string>
     <string name="audio">Audio</string>
     <string name="profile">Profile</string>
+    <string name="register">ENREGISTER</string>
+    <string name="register_with_google">Enregistrer avec Google</string>
+    <string name="connect_with_google">Se connecter avec Google</string>
 </resources>
