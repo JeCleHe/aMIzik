@@ -70,7 +70,7 @@
             android:background="@drawable/edit_text"
             android:ems="10"
             android:hint="Email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:paddingLeft="10dp"
             android:textColorHint="#516381"
             android:textSize="13dp" />

@@ -50,20 +50,16 @@ public class LoginActivity extends AppCompatActivity {
         btnc  = (Button) findViewById(id.btnc) ;
         signup = (TextView) findViewById(id.signup);
 
-        //Temporary
-        imv = findViewById(R.id.imv);
-        imv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent in = new Intent(LoginActivity.this, NavigationActivity.class);
-                startActivity(in);
-            }
-        });
+        if(mAuth.getCurrentUser() != null){
+            Intent i = new Intent(getApplicationContext(), NavigationActivity.class);
+            finishAffinity();
+            startActivity(i);
+        }
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(LoginActivity.this, SingupActivity.class);
+                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
                 startActivity(i);
             }
         });
@@ -131,8 +127,8 @@ public class LoginActivity extends AppCompatActivity {
                 Uri personPhoto = acct.getPhotoUrl();
                 Toast.makeText(this, "user Email"+personEmail, Toast.LENGTH_SHORT).show();
             }
-          // create a new Activity message
-          //  startActivity(new Intent(MainActivity.this , Second.class));
+            // create a new Activity message
+            //  startActivity(new Intent(MainActivity.this , Second.class));
             // Signed in successfully, show authenticated UI.
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -150,14 +146,14 @@ public class LoginActivity extends AppCompatActivity {
 
         if( mail.isEmpty()){
 
-          email.setError("Email vide");
-          email.requestFocus();
-          return;
+            email.setError("Email vide");
+            email.requestFocus();
+            return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
-          email.setError("Email incorrect");
-          email.requestFocus();
-          return;
+            email.setError("Email incorrect");
+            email.requestFocus();
+            return;
         }
         if (password.isEmpty()){
             pass.setError("Password vide");
@@ -174,13 +170,13 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (!task.isSuccessful()){
 
-                       // Acceuilll
-                        startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
-                        finish();
+                    // Acceuilll
+                    startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
+                    finish();
 
                 }else {
 
-                    Toast.makeText(LoginActivity.this , "echec de connection" , Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
 
                 }
@@ -189,5 +185,3 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 }
-
-
