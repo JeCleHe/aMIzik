@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.amizik.LoginActivity;
 import com.example.amizik.R;
@@ -21,7 +22,10 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ProfileFragment extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
 
+    boolean isConnectedwithGmail;
+
     private Button btnLogout;
+    private FirebaseAuth mAuth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,14 +38,29 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        isConnectedwithGmail = LoginActivity.isconnectedwithGoogle;
+        mAuth = FirebaseAuth.getInstance();
+
         btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                Intent i = new Intent(getActivity(), LoginActivity.class);
-                startActivity(i);
-                getActivity().finish();
+                if(mAuth.getCurrentUser()!= null){
+                    mAuth.signOut();
+                    Toast.makeText(getActivity(), "Signed out successfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(i);
+                    getActivity().finish();
+                }
+
+                if(isConnectedwithGmail == true){
+                    LoginActivity.mGoogleSignInClient.signOut();
+                    Intent i = new Intent(getActivity(), LoginActivity.class);
+                    startActivity(i);
+                    getActivity().finish();
+                }
+
+
             }
         });
     }
