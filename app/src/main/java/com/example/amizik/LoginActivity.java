@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
@@ -73,35 +74,35 @@ public class LoginActivity extends AppCompatActivity {
 
         // Configure sign-in to request the user's ID, email address, and basic
 // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        /*GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
-                .build();
+                .build();*/
 
         // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+       /* mGoogleSignInClient = GoogleSignIn.getClient(this, gso);*/
 
         // Check for existing Google Sign In account, if the user is already signed in
 // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+       /* GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);*/
         // Set the dimensions of the sign-in button.
-        SignInButton signInButton = findViewById(id.sign_in_button);
-        signInButton.setSize(SignInButton.SIZE_STANDARD);
+     /*   SignInButton signInButton = findViewById(id.sign_in_button);
+        signInButton.setSize(SignInButton.SIZE_STANDARD);*/
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        /*signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 signIn();
             }
-        });
+        })*/;
     }
 
-    private void signIn() {
+    /*private void signIn() {
 
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
-    }
+    }*/
 
-    @Override
+   /* @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
@@ -112,9 +113,9 @@ public class LoginActivity extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
-    }
+    }*/
 
-    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+    /*private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
@@ -135,52 +136,47 @@ public class LoginActivity extends AppCompatActivity {
             // Please refer to the GoogleSignInStatusCodes class reference for more information.;
             Log.d("message ", e.toString());
         }
-    }
+    }*/
 
 
 
     private void userLogin() {
-        String mail = email.getText().toString().trim();
-        String password = pass.getText().toString().trim();
+        String strEmail = email.getText().toString().trim();
+        String strPassword = pass.getText().toString().trim();
 
-
-        if( mail.isEmpty()){
-
-            email.setError("Email vide");
-            email.requestFocus();
+        if(TextUtils.isEmpty(strEmail)){
+            email.setError("Email requis");
             return;
         }
-        if (!Patterns.EMAIL_ADDRESS.matcher(mail).matches()){
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(strEmail).matches()) {
             email.setError("Email incorrect");
             email.requestFocus();
             return;
         }
-        if (password.isEmpty()){
-            pass.setError("Password vide");
-            pass.requestFocus();
+
+        if(TextUtils.isEmpty(strPassword)){
+            pass.setError("Mot de passe requis");
             return;
         }
-        if (password.length() < 6){
-            pass.setError(" le password doit avoir 6 lettre minimum");
-            pass.requestFocus();
+
+        if(strPassword.length() < 8){
+            pass.setError("Le mot de passe doit a voir au moins 8 charcteres");
             return;
         }
-        mAuth.signInWithEmailAndPassword(mail ,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+        // Authenticate the user
+        mAuth.signInWithEmailAndPassword(strEmail, strPassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
-                if (!task.isSuccessful()){
-
-                    // Acceuilll
-                    startActivity(new Intent(LoginActivity.this, NavigationActivity.class));
-                    finish();
-
-                }else {
-
-                    Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-
+                if(task.isSuccessful()){
+                    Toast.makeText(LoginActivity.this, "Logged in succesfully", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
+                    finishAffinity();
+                    startActivity(i);
+                } else{
+                    Toast.makeText(LoginActivity.this, "Error ! The password or the username is incorrect.", Toast.LENGTH_LONG).show();
                 }
-
             }
         });
     }
