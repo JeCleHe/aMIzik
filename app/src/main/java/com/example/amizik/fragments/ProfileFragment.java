@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.amizik.LoginActivity;
 import com.example.amizik.R;
+import com.example.amizik.SignupActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +23,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ProfileFragment extends Fragment {
     GoogleSignInClient mGoogleSignInClient;
 
-    boolean isConnectedwithGmail;
+    private boolean isSignedInwithGmail;
+    private boolean isSignedUpwithGmail;
 
     private Button btnLogout;
     private FirebaseAuth mAuth;
@@ -38,7 +40,8 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        isConnectedwithGmail = LoginActivity.isconnectedwithGoogle;
+        isSignedInwithGmail = LoginActivity.isconnectedwithGoogle;
+        isSignedUpwithGmail = SignupActivity.isconnectedwithGoogle;
         mAuth = FirebaseAuth.getInstance();
 
         btnLogout = view.findViewById(R.id.btnLogout);
@@ -47,21 +50,26 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 if(mAuth.getCurrentUser()!= null){
                     mAuth.signOut();
-                    Toast.makeText(getActivity(), "Signed out successfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(i);
-                    getActivity().finish();
+                    goBackToLoginActivity();
                 }
 
-                if(isConnectedwithGmail == true){
+                if(isSignedInwithGmail == true){
                     LoginActivity.mGoogleSignInClient.signOut();
-                    Intent i = new Intent(getActivity(), LoginActivity.class);
-                    startActivity(i);
-                    getActivity().finish();
+                    goBackToLoginActivity();
                 }
 
-
+                if(isSignedUpwithGmail == true){
+                    SignupActivity.mGoogleSignInClient.signOut();
+                    goBackToLoginActivity();
+                }
             }
         });
+    }
+
+    public void goBackToLoginActivity(){
+        Toast.makeText(getActivity(), "Signed out successfully", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(getActivity(), LoginActivity.class);
+        startActivity(i);
+        getActivity().finish();
     }
 }
