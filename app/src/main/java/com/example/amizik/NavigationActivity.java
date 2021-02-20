@@ -31,9 +31,13 @@ public class NavigationActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigation = findViewById(R.id.bottom_navigation);
         bottomNavigation.setOnNavigationItemSelectedListener(navigationListener);
 
-        //To display the video fragment by default
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-               new VideoFragment()).commit();
+        if(OptionActivity.videoIsClicked == true){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new VideoFragment()).commit();
+        }else if(OptionActivity.audioIsclicked == true){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new AudioFragment()).commit();
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navigationListener =
@@ -41,7 +45,7 @@ public class NavigationActivity extends AppCompatActivity {
                 @Override
                 public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                     Fragment selectedFragment = null;
-
+                    
                     switch(item.getItemId()){
                         case R.id.nav_video:
                             selectedFragment = new VideoFragment();

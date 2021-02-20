@@ -65,7 +65,7 @@ public class SignupActivity extends AppCompatActivity {
 
 
         if(mAuth.getCurrentUser() != null){
-            Intent i = new Intent(getApplicationContext(), NavigationActivity.class);
+            Intent i = new Intent(getApplicationContext(), OptionActivity.class);
             startActivity(i);
             finish();
         }
@@ -112,7 +112,7 @@ public class SignupActivity extends AppCompatActivity {
                                 Toast.makeText(SignupActivity.this, "User is sign in", Toast.LENGTH_LONG).show();
                             }
 
-                            Intent i = new Intent(SignupActivity.this, NavigationActivity.class);
+                            Intent i = new Intent(SignupActivity.this, OptionActivity.class);
                             finishAffinity();
                             startActivity(i);
                         } else{
@@ -171,7 +171,7 @@ public class SignupActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
                     isconnectedwithGoogle = true;
-                    Intent i = new Intent(SignupActivity.this, NavigationActivity.class);
+                    Intent i = new Intent(SignupActivity.this, OptionActivity.class);
                     finishAffinity();
                     startActivity(i);
                 } else{
