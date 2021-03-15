@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
         signup = (TextView) findViewById(id.signup);
 
         if(mAuth.getCurrentUser() != null){
-            Intent i = new Intent(getApplicationContext(), NavigationActivity.class);
+            Intent i = new Intent(getApplicationContext(), OptionActivity.class);
             finishAffinity();
             startActivity(i);
         }
@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
                     FirebaseUser user = mAuth.getCurrentUser();
                     updateUI(user);
                     isconnectedwithGoogle = true;
-                    Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
+                    Intent i = new Intent(LoginActivity.this, OptionActivity.class);
                     finishAffinity();
                     startActivity(i);
                 } else{
@@ -190,7 +190,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(LoginActivity.this, "Logged in succesfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this, NavigationActivity.class);
+                    Intent i = new Intent(LoginActivity.this, OptionActivity.class);
                     finishAffinity();
                     startActivity(i);
                 } else{
