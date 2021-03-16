@@ -1,2 +1,3 @@
+include ':android-phonefield-Input'
 rootProject.name='aMizik'
 include ':app'
