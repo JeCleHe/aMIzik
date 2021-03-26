@@ -39,10 +39,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        isSignedInwithGmail = LoginActivity.isconnectedwithGoogle;
-        isSignedUpwithGmail = SignupActivity.isconnectedwithGoogle;
-        mAuth = FirebaseAuth.getInstance();
+                mAuth = FirebaseAuth.getInstance();
 
         btnLogout = view.findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(new View.OnClickListener() {
@@ -50,16 +47,6 @@ public class ProfileFragment extends Fragment {
             public void onClick(View view) {
                 if(mAuth.getCurrentUser()!= null){
                     mAuth.signOut();
-                    goBackToLoginActivity();
-                }
-
-                if(isSignedInwithGmail == true){
-                    LoginActivity.mGoogleSignInClient.signOut();
-                    goBackToLoginActivity();
-                }
-
-                if(isSignedUpwithGmail == true){
-                    SignupActivity.mGoogleSignInClient.signOut();
                     goBackToLoginActivity();
                 }
             }
