@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#ffffff"
+    android:gravity="center"
     tools:context=".SignupActivity">
 
     <ImageView
@@ -119,29 +120,5 @@
         android:background="@color/colorPrimaryDark"
         android:text="@string/register"
         android:textColor="@color/white" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:text="ou"
-        android:textStyle="bold"
-        android:fontFamily="@font/antic_didone"
-        android:textColor="#000000"
-        android:textSize="13dp"/>
-
-    <com.shobhitpuri.custombuttons.GoogleSignInButton
-        android:id="@+id/signup_with_google"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/register_with_google"
-        android:layout_gravity="center"
-        android:layout_marginTop="5dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginEnd="27dp"
-        app:isDarkTheme="true" />
-
 
 </LinearLayout>
