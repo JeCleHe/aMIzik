@@ -10,6 +10,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.amizik.fragments.AudioFragment;
+
 public class MainActivity extends AppCompatActivity {
 private static  int timeout = 3000;
 TextView amizik , ayizyen;
@@ -18,6 +20,7 @@ ImageView image;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportFragmentManager().beginTransaction().replace(R.id.main, new AudioFragment() ).commit();
         amizik = (TextView) findViewById(R.id.amizik);
         ayizyen= (TextView) findViewById(R.id.ayizyen);
         image = (ImageView) findViewById(R.id.image);
