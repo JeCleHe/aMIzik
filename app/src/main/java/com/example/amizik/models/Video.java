@@ -11,6 +11,12 @@ public class Video {
 
     public Video(){}
 
+    public Video(String title, String url, String poster) {
+        this.title = title;
+        this.url = url;
+        this.poster = poster;
+    }
+
     public String getTitle() {
         return title;
     }
