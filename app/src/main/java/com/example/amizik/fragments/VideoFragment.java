@@ -16,6 +16,7 @@ import com.example.amizik.R;
 import com.example.amizik.adapters.VideoAdapter;
 import com.example.amizik.models.Video;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class VideoFragment extends Fragment {

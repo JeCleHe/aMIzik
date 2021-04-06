@@ -1,8 +1,6 @@
 package com.example.amizik.models;
 
-import org.parceler.Parcel;
 
-@Parcel
 public class Video {
 
     private String title;
