@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -53,6 +54,11 @@ public class NavigationActivity extends AppCompatActivity {
 
                         case R.id.nav_audio:
                             selectedFragment = new AudioFragment();
+
+                            Intent intent = new Intent(NavigationActivity.this, AudioPlayer.class);
+                            startActivity(intent);
+                            finish();
+
                             break;
 
                         case R.id.nav_profile:
