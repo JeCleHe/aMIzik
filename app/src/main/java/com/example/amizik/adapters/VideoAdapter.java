@@ -1,5 +1,6 @@
 package com.example.amizik.adapters;
 
+import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,61 +17,42 @@ import com.bumptech.glide.Glide;
 import com.example.amizik.NavigationActivity;
 import com.example.amizik.PlayVideoActivity;
 import com.example.amizik.R;
-import com.example.amizik.fragments.BlankFragment;
+
 import com.example.amizik.models.Video;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
 
-public class VideoAdapter extends FirebaseRecyclerAdapter<Video, VideoAdapter.ViewHolder> {
+import java.util.ArrayList;
 
-    public VideoAdapter(@NonNull FirebaseRecyclerOptions<Video> options) {
-        super(options);
-    }
+public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
+    Context context;
+    ArrayList<String> arrayListVideos;
 
-    @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, int position, @NonNull Video video) {
-       holder.bind(video);
-        holder.container.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AppCompatActivity activity = (AppCompatActivity)v.getContext();
-                activity.getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.fragment_container, new BlankFragment(video.getTitle(), video.getUrl()))
-                        .addToBackStack(null).commit();
-            }
-        });
+    public VideoAdapter(Context context, ArrayList<String> arrayListVideos) {
+        this.context = context;
+        this.arrayListVideos = arrayListVideos;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.video_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.video_item, parent, false);
         return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return arrayListVideos.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        ImageView videoImg;
-        TextView videoTitle;
-        RelativeLayout container;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            videoImg = itemView.findViewById(R.id.videoImg);
-            videoTitle = itemView.findViewById(R.id.videoTitle);
-            container = itemView.findViewById(R.id.container);
         }
-
-        public void bind(Video video) {
-            videoTitle.setText(video.getUrl());
-            Glide.with(videoImg.getContext())
-                    .load(video.getPoster())
-                    .centerCrop()
-                    .placeholder(R.drawable.video_icon)
-                    .into(videoImg);
-        }
-
     }
+
 }

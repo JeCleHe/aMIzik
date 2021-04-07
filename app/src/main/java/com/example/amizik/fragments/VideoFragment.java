@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import com.example.amizik.R;
 import com.example.amizik.adapters.VideoAdapter;
@@ -19,10 +20,14 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class VideoFragment extends Fragment {
 
-    RecyclerView rvVideo;
-    VideoAdapter adapter;
+    @BindView(R.id.rvVideo) RecyclerView rvVideo;
+    @BindView(R.id.progressBarVideos) ProgressBar progressBar;
+    VideoAdapter videoAdapter;
 
     public VideoFragment() {
         // Required empty public constructor
@@ -33,35 +38,24 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_video, container, false);
+       View view = inflater.inflate(R.layout.fragment_video, container, false);
+
+       return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvVideo = (RecyclerView) view.findViewById(R.id.rvVideo);
+        ButterKnife.bind(this, view);
+
+        rvVideo.setHasFixedSize(true);
         rvVideo.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        FirebaseRecyclerOptions<Video> options =
-                new FirebaseRecyclerOptions.Builder<Video>()
-                        .setQuery( FirebaseDatabase.getInstance().getReference().child("video"), Video.class)
-                        .build();
 
-        adapter = new VideoAdapter(options);
-        rvVideo.setAdapter(adapter);
+        videoAdapter = new VideoAdapter();
+        rvVideo.setAdapter(videoAdapter);
 
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        adapter.startListening();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        adapter.stopListening();
-    }
 }
