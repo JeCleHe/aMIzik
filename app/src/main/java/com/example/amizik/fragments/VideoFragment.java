@@ -20,6 +20,8 @@ import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,6 +30,7 @@ public class VideoFragment extends Fragment {
     @BindView(R.id.rvVideo) RecyclerView rvVideo;
     @BindView(R.id.progressBarVideos) ProgressBar progressBar;
     VideoAdapter videoAdapter;
+    ArrayList<Video> arrayListVideos;
 
     public VideoFragment() {
         // Required empty public constructor

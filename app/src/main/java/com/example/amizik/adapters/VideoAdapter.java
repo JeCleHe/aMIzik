@@ -22,6 +22,9 @@ import com.example.amizik.models.Video;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
     Context context;
     ArrayList<String> arrayListVideos;
@@ -50,8 +53,19 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
+        @BindView(R.id.videoImg) ImageView videoImg;
+        @BindView(R.id.videoTitle) TextView videoTitle;
+        @BindView(R.id.container) RelativeLayout container;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
         }
     }
 
