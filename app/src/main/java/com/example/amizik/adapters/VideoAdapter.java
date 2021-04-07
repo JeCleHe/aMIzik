@@ -1,7 +1,6 @@
 package com.example.amizik.adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,14 +9,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.amizik.NavigationActivity;
-import com.example.amizik.PlayVideoActivity;
 import com.example.amizik.R;
 
+import com.example.amizik.models.TypeThumbnail;
 import com.example.amizik.models.Video;
 
 import java.util.ArrayList;
@@ -27,9 +24,9 @@ import butterknife.ButterKnife;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> {
     Context context;
-    ArrayList<String> arrayListVideos;
+    ArrayList<Video> arrayListVideos;
 
-    public VideoAdapter(Context context, ArrayList<String> arrayListVideos) {
+    public VideoAdapter(Context context, ArrayList<Video> arrayListVideos) {
         this.context = context;
         this.arrayListVideos = arrayListVideos;
     }
@@ -43,7 +40,21 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Video video = arrayListVideos.get(position);
+        if(video != null){
+            holder.videoTitle.setText(video.snippet.title);
+            if(video.snippet.thumbnails != null){
+                TypeThumbnail t = video.snippet.thumbnails.high;
+                if(t == null){
+                    t = video.snippet.thumbnails.medium;
+                }
+                if(t == null){
+                    t = video.snippet.thumbnails.standard;
+                }
 
+                Glide.with(context).load(t.url).into(holder.videoImg);
+            }
+        }
     }
 
     @Override
