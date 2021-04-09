@@ -48,11 +48,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
                 if(t == null){
                     t = video.snippet.thumbnails.medium;
                 }
-                if(t == null){
+                if(t != null){
                     t = video.snippet.thumbnails.standard;
+                    Glide.with(context).load(t.url).into(holder.videoImg);
                 }
 
-                Glide.with(context).load(t.url).into(holder.videoImg);
             }
         }
     }
