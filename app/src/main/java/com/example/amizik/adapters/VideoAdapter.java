@@ -1,6 +1,7 @@
 package com.example.amizik.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.amizik.ActivityVideoDetail;
 import com.example.amizik.R;
 
 import com.example.amizik.models.TypeThumbnail;
@@ -74,7 +76,12 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder> 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Video videoObj = arrayListVideos.get(getAdapterPosition());
+                    Intent intent = new Intent(context, ActivityVideoDetail.class);
+                    intent.putExtra("videoId", videoObj.contentDetails.videoId);
+                    intent.putExtra("videoTitle", videoObj.snippet.title);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    context.startActivity(intent);
                 }
             });
         }
