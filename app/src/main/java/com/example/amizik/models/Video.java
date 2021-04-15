@@ -1,4 +1,12 @@
 package com.example.amizik.models;
 
-public class Video {
+
+import java.io.Serializable;
+
+public class Video implements Serializable {
+
+    public String id;
+    public Snippet snippet;
+    public ContentDetails contentDetails;
+
 }
