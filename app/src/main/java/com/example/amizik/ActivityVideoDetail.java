@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.youtube.player.FragmentVideoPlayer;
 import com.google.android.youtube.player.YouTubeApiServiceUtil;
@@ -21,6 +22,7 @@ public class ActivityVideoDetail extends AppCompatActivity {
     @BindView(R.id.tv_title) TextView tv_title;
 
     String videoId, title;
+    FragmentVideoPlayer fragmentVideoPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,13 @@ public class ActivityVideoDetail extends AppCompatActivity {
             return;
         }
 
-        FragmentVideoPlayer fragmentVideoPlayer = (FragmentVideoPlayer)getSupportFragmentManager()
-                .findFragmentById(R.id.fragment_youtube);
+        // Begin the transaction
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+// Replace the contents of the container with the new fragment
+        ft.replace(R.id.placeholder, fragmentVideoPlayer);
+// or ft.add(R.id.your_placeholder, new FooFragment());
+// Complete the changes added above
+        ft.commit();
 
         fragmentVideoPlayer.setVideoId(videoId);
     }
