@@ -72,4 +72,5 @@ dependencies {
 
     implementation 'com.karumi:dexter:6.2.2'
     implementation 'com.github.jeancsanchez:JcPlayer:2.7.0'
+
 }
