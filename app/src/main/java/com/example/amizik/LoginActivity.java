@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
         signupBtn = (Button) findViewById(id.signupBtn);
 
         if(mAuth.getCurrentUser() != null){
-            Intent i = new Intent(getApplicationContext(), AudioActivity.class);
+            Intent i = new Intent(getApplicationContext(), OptionActivity.class);
             finishAffinity();
             startActivity(i);
         }
@@ -96,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(LoginActivity.this, "Logged in succesfully", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(LoginActivity.this,AudioActivity.class);
+                    Intent i = new Intent(LoginActivity.this, OptionActivity.class);
                     finishAffinity();
                     startActivity(i);
                 } else{
