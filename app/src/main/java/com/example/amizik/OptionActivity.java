@@ -41,7 +41,7 @@ public class OptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 videoIsClicked = true;
-                Intent i = new Intent(OptionActivity.this, NavigationActivity.class);
+                Intent i = new Intent(OptionActivity.this, VideosActivity.class);
                 startActivity(i);
             }
         });
@@ -50,7 +50,7 @@ public class OptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 videoIsClicked = true;
-                Intent i = new Intent(OptionActivity.this, NavigationActivity.class);
+                Intent i = new Intent(OptionActivity.this, VideosActivity.class);
                 startActivity(i);
             }
         });
@@ -59,7 +59,7 @@ public class OptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 audioIsclicked = true;
-                Intent i = new Intent(OptionActivity.this, NavigationActivity.class);
+                Intent i = new Intent(OptionActivity.this, SongsActivity.class);
                 startActivity(i);
             }
         });
@@ -68,7 +68,7 @@ public class OptionActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 audioIsclicked = true;
-                Intent i = new Intent(OptionActivity.this, NavigationActivity.class);
+                Intent i = new Intent(OptionActivity.this, SongsActivity.class);
                 startActivity(i);
             }
         });
