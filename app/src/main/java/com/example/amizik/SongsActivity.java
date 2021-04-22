@@ -73,11 +73,10 @@ public class SongsActivity extends AppCompatActivity {
                     currentIndex = 0;
                     final String s = "Evangelique";
 
-                    if(s.equals(getSongs.getSongsCategory())){
                         mUpload.add(getSongs);
                         checkin = true;
                         jcAudios.add(JcAudio.createFromURL(getSongs.getSongTitle(), getSongs.getSongLink()));
-                    }
+
                 }
 
                 adapter.setSelectedPosition(0);
