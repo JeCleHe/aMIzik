@@ -48,14 +48,6 @@ public class FragmentVideoPlayer extends YouTubePlayerSupportFragmentX implement
         initialize(MyConsts.APIKEY, this);
     }
 
-/* @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-       
-       View view = inflater.inflate(R.layout.fragment_video_player, container, false);
-       return view;
-    }*/
-
     @Override
     public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
         if(videoId != null){

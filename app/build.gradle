@@ -69,4 +69,8 @@ dependencies {
     annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
 
     implementation files('libs/YouTubeAndroidPlayerApi.jar')
+
+    implementation 'com.karumi:dexter:6.2.2'
+    implementation 'com.github.jeancsanchez:JcPlayer:2.7.0'
+
 }

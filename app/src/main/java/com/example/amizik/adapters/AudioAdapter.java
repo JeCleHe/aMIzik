@@ -1,4 +1,4 @@
 package com.example.amizik.adapters;
 
-public class Audio {
+public class AudioAdapter {
 }

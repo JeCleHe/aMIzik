@@ -14,11 +14,17 @@
         app:titleTextColor="@color/white"
         android:background="@color/colorPrimary"/>
 
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_youtube"
-        android:name="com.google.android.youtube.player.FragmentVideoPlayer"></fragment>
+<!--    <frag-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/fragment_youtube"-->
+<!--        class="com.google.android.youtube.player.FragmentVideoPlayer"></frag>-->
+
+    <FrameLayout
+        android:id="@+id/placeholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </FrameLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
