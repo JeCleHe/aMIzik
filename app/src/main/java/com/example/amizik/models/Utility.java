@@ -1,3 +1,4 @@
+/*
 package com.example.amizik.models;
 
 public class Utility {
@@ -11,3 +12,4 @@ public class Utility {
         return converted;
     }
 }
+*/

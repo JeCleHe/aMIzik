@@ -1,10 +1,10 @@
 package com.example.amizik.models;
 
 public class GetSongs {
-    String songsCategory, songTitle, artist, album_art, songDuration, songLink, mKey;
+    String songsCategory, songTitle, artist, songLink, mKey;
+   // String songDuration;
 
-    public GetSongs(String songsCategory, String songTitle, String artist, String album_art
-            , String songDuration, String songLink) {
+    public GetSongs(String songsCategory, String songTitle, String artist, String songLink) {
         if(songTitle.trim().equals("")){
             songTitle = "No title";
 
@@ -12,8 +12,8 @@ public class GetSongs {
         this.songsCategory = songsCategory;
         this.songTitle = songTitle;
         this.artist = artist;
-        this.album_art = album_art;
-        this.songDuration = songDuration;
+       // this.album_art = album_art;
+       // this.songDuration = songDuration;
         this.songLink = songLink;
     }
 
@@ -44,21 +44,21 @@ public class GetSongs {
         this.artist = artist;
     }
 
-    public String getAlbum_art() {
+    /*public String getAlbum_art() {
         return album_art;
-    }
+    }*/
 
-    public void setAlbum_art(String album_art) {
+    /*public void setAlbum_art(String album_art) {
         this.album_art = album_art;
-    }
+    }*/
 
-    public String getSongDuration() {
+ /*   public String getSongDuration() {
         return songDuration;
-    }
+    }*/
 
-    public void setSongDuration(String songDuration) {
+ /*   public void setSongDuration(String songDuration) {
         this.songDuration = songDuration;
-    }
+    }*/
 
     public String getSongLink() {
         return songLink;

@@ -8,7 +8,8 @@
     android:layout_marginTop="5dp"
     android:layout_marginBottom="5dp"
     android:focusable="true"
-    android:elevation="25dp"
+    android:elevation="5dp"
+    android:id="@+id/container"
     android:background="?android:attr/selectableItemBackground">
 
     <ImageView
@@ -44,16 +45,6 @@
         android:layout_below="@+id/tv_title"
         android:id="@+id/tv_artist"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/duration"
-        android:text="3:05"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimary"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"/>
 
     <ImageView
         android:id="@+id/iv_play_active"
@@ -61,8 +52,8 @@
         android:layout_height="30dp"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/tv_duration"
-        android:src="@drawable/ic_play_circle_outline_white"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_baseline_play_circle_filled_24"
         android:visibility="invisible"/>
 
 

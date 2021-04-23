@@ -48,7 +48,7 @@ public class SignupActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.register);
 
         if(mAuth.getCurrentUser() != null){
-            Intent i = new Intent(getApplicationContext(), AudioActivity.class);
+            Intent i = new Intent(getApplicationContext(), OptionActivity.class);
             startActivity(i);
             finish();
         }
@@ -95,7 +95,7 @@ public class SignupActivity extends AppCompatActivity {
                                 Toast.makeText(SignupActivity.this, "User is sign in", Toast.LENGTH_LONG).show();
                             }
 
-                            Intent i = new Intent(SignupActivity.this, AudioActivity.class);
+                            Intent i = new Intent(SignupActivity.this, OptionActivity.class);
                             finishAffinity();
                             startActivity(i);
                         } else{
