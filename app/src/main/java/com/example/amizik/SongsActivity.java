@@ -29,6 +29,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -54,7 +55,10 @@ public class SongsActivity extends AppCompatActivity {
 
     private boolean checkPermission = false;
     Toolbar toolbar;
+    FloatingActionButton floatingActionButton;
     Uri uri;
+
+    private FirebaseAuth mAuth;
 
     String songsCategory, songTitle, artist, songLink;
 
@@ -74,6 +78,9 @@ public class SongsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
 
+        mAuth = FirebaseAuth.getInstance();
+
+        floatingActionButton = findViewById(R.id.floating);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //to change the toolbar's color
@@ -98,6 +105,33 @@ public class SongsActivity extends AppCompatActivity {
             }
         });
 
+        if (mAuth.getCurrentUser().getEmail().equals("charly@gmail.com")) {
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("hergy@gmail.com")){
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("cleevenscharlemagne@gmail.com")){
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else {
+
+            floatingActionButton.setVisibility(View.GONE);
+
+        }
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(validatePermission()){
+                    pickSong();
+                }
+            }
+        });
+
         retrieveData();
 
     }
@@ -112,7 +146,6 @@ public class SongsActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.custom_menu, menu);
-        onPrepareOptionsMenu(menu);
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -121,26 +154,11 @@ public class SongsActivity extends AppCompatActivity {
 
         if(item.getItemId() == R.id.nav_upload){
 
-            if(validatePermission()){
-                pickSong();
-            }
+            Intent i = new Intent(SongsActivity.this, ProfileActivity.class);
+            startActivity(i);
 
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onPrepareOptionsMenu(Menu menu) {
-
-        String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-        MenuItem upload = menu.findItem(R.id.nav_upload);
-
-        if(currentUser == AdminUtilities.ADM_1 || currentUser == AdminUtilities.ADM_2 || currentUser == AdminUtilities.ADM_3) {
-            upload.setVisible(true);
-        } else {
-            upload.setVisible(false);
-        }
-        return true;
     }
 
     private void pickSong() {
@@ -223,8 +241,7 @@ public class SongsActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if(task.isSuccessful()){
                             Toast.makeText(SongsActivity.this, "Song uploaded!", Toast.LENGTH_SHORT).show();
-                            retrieveData();
-                           // adapter.notifyItemInserted(mUpload.size()-1);
+                           adapter.notifyItemInserted(mUpload.size()-1);
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
