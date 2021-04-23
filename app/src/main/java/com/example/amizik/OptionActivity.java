@@ -32,12 +32,21 @@ public class OptionActivity extends AppCompatActivity {
         //to change the toolbar's color
         toolbar.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
 
-        tvVideo = findViewById(R.id.tvVideo);
+       // tvVideo = findViewById(R.id.tvVideo);
         tvAudio = findViewById(R.id.tvAudio);
-        ivVideo = findViewById(R.id.ivVideo);
+        //ivVideo = findViewById(R.id.ivVideo);
         ivAudio = findViewById(R.id.ivAudio);
 
-        ivVideo.setOnClickListener(new View.OnClickListener() {
+    /*    ivVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                videoIsClicked = true;
+                Intent i = new Intent(OptionActivity.this, VideosActivity.class);
+                startActivity(i);
+            }
+        });*/
+
+        /*tvVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 videoIsClicked = true;
@@ -45,16 +54,7 @@ public class OptionActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
-
-        tvVideo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                videoIsClicked = true;
-                Intent i = new Intent(OptionActivity.this, VideosActivity.class);
-                startActivity(i);
-            }
-        });
-
+*/
         ivAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
