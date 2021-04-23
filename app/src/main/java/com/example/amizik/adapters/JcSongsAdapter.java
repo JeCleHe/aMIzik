@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.amizik.R;
 
 import com.example.amizik.models.GetSongs;
-import com.example.amizik.models.Utility;
+//import com.example.amizik.models.Utility;
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class JcSongsAdapter extends RecyclerView.Adapter<JcSongsAdapter.SongsAda
         if(getSongs != null){
 
             if(selectedPosition == position){
-                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+                holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.gray));
                 holder.iv_play_active.setVisibility(View.VISIBLE);
             } else {
                 holder.itemView.setBackgroundColor(ContextCompat.getColor(context, R.color.white));
@@ -58,8 +58,8 @@ public class JcSongsAdapter extends RecyclerView.Adapter<JcSongsAdapter.SongsAda
 
         holder.tv_title.setText(getSongs.getSongTitle());
         holder.tv_artist.setText(getSongs.getArtist());
-        String duration = Utility.convertDuration(Long.parseLong(getSongs.getSongDuration()));
-        holder.tv_duration.setText(duration);
+        /*String duration = Utility.convertDuration(Long.parseLong(getSongs.getSongDuration()));*/
+       // holder.tv_duration.setText(duration);
 
         holder.bind(getSongs, listener);
     }
@@ -71,7 +71,8 @@ public class JcSongsAdapter extends RecyclerView.Adapter<JcSongsAdapter.SongsAda
 
     public class SongsAdapterViewHolder extends RecyclerView.ViewHolder{
 
-        private TextView tv_title, tv_artist, tv_duration;
+        private TextView tv_title, tv_artist;
+       // private TextView tv_duration;
         private ImageView iv_play_active;
 
         public SongsAdapterViewHolder(@NonNull View itemView) {
@@ -79,7 +80,7 @@ public class JcSongsAdapter extends RecyclerView.Adapter<JcSongsAdapter.SongsAda
 
             tv_title = itemView.findViewById(R.id.tv_title);
             tv_artist = itemView.findViewById(R.id.tv_artist);
-            tv_duration = itemView.findViewById(R.id.tv_duration);
+           // tv_duration = itemView.findViewById(R.id.tv_duration);
             iv_play_active = itemView.findViewById(R.id.iv_play_active);
 
 
