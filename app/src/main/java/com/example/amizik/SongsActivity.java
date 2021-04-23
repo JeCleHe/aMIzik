@@ -58,6 +58,8 @@ public class SongsActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
     Uri uri;
 
+    private FirebaseAuth mAuth;
+
     String songsCategory, songTitle, artist, songLink;
 
     RecyclerView recyclerView;
@@ -75,6 +77,8 @@ public class SongsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_songs);
+
+        mAuth = FirebaseAuth.getInstance();
 
         floatingActionButton = findViewById(R.id.floating);
         toolbar = findViewById(R.id.toolbar);
@@ -101,11 +105,30 @@ public class SongsActivity extends AppCompatActivity {
             }
         });
 
+        if (mAuth.getCurrentUser().getEmail().equals("charly@gmail.com")) {
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("hergy@gmail.com")){
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("cleevenscharlemagne@gmail.com")){
+
+            floatingActionButton.setVisibility(View.VISIBLE);
+
+        } else {
+
+            floatingActionButton.setVisibility(View.GONE);
+
+        }
+
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(SongsActivity.this, ProfileActivity.class);
-                startActivity(i);
+                if(validatePermission()){
+                    pickSong();
+                }
             }
         });
 
@@ -131,9 +154,8 @@ public class SongsActivity extends AppCompatActivity {
 
         if(item.getItemId() == R.id.nav_upload){
 
-            if(validatePermission()){
-                pickSong();
-            }
+            Intent i = new Intent(SongsActivity.this, ProfileActivity.class);
+            startActivity(i);
 
         }
         return super.onOptionsItemSelected(item);

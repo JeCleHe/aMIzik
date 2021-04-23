@@ -40,7 +40,24 @@ public class ProfileActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        username.setText(mAuth.getCurrentUser().getUid());
+        if (mAuth.getCurrentUser().getEmail().equals("charly@gmail.com")) {
+
+            username.setText("Admin:");
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("hergy@gmail.com")){
+
+            username.setText("Admin:");
+
+        } else if(mAuth.getCurrentUser().getEmail().equals("cleevenscharlemagne@gmail.com")){
+
+            username.setText("Admin:");
+
+        } else {
+
+            username.setText("User:");
+
+        }
+
         email.setText(mAuth.getCurrentUser().getEmail());
 
         btnLogout = findViewById(R.id.btnLogout);

@@ -37,7 +37,7 @@
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating"
-            android:src="@drawable/ic_person"
+            android:src="@drawable/ic_baseline_upgrade_24"
             app:fabSize="normal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
